@@ -22,6 +22,7 @@ export default {
 }
 </script>
 <style lang="stylus" scoped >
+@import '~styl/reset'
 .xitom
   height 100vh
   border 1px solid #000

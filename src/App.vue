@@ -12,7 +12,6 @@ export default {
 }
 </script>
 <style lang="stylus" scoped >
-@import '~styl/reset'
 #app
   font-size 14px
   color #333

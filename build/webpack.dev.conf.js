@@ -2,11 +2,13 @@ const merge = require('webpack-merge')
 const baseConf = require('./webpack.base.conf')
 const { development } = require('../config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const portfinder = require('portfinder')
 
 const devWebpackConfig = merge(baseConf, {
   mode: 'development',
+  //显示错误的具体位置
   devtool: 'inline-source-map',
+  //服务器配置
   devServer: {
     compress: true,
     https: false,
@@ -38,9 +40,20 @@ const devWebpackConfig = merge(baseConf, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../index.html'),
+      template: './index.html',
       inject: 'body'
     })
   ]
 })
-module.exports = devWebpackConfig
+module.exports = new Promise((res, rej) => {
+  portfinder.basePort = development.port
+  //端口被占用，重新获取端口
+  portfinder.getPort((err, port) => {
+    if (err) {
+      rej(err)
+    } else {
+      devWebpackConfig.devServer.port = port
+      res(devWebpackConfig)
+    }
+  })
+})
