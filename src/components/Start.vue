@@ -3,8 +3,8 @@
     //- 头部
     .xitom__head {{ title }}
     //- 主体
-    .xitom__main {{ msg }}
-
+    .xitom__main
+      img(:src="img")
     //- 底部
     .xitom__foot {{ github }}
 
@@ -15,14 +15,13 @@ export default {
   data: () => {
     return {
       title: 'vue模版(基于webpack开发构建)',
-      msg: '模版加载成功',
+      img: require('img/logo.png'),
       github: 'https://github.com/One-AnDong'
     }
   }
 }
 </script>
 <style lang="stylus" scoped >
-@import '~styl/reset'
 .xitom
   height 100vh
   border 1px solid #000

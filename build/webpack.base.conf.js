@@ -2,18 +2,18 @@ const webpack = require('webpack')
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 //生成绝对路径
-function resolve(path) {
-  return path.join(__dirname, '..', path)
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
 }
 module.exports = {
   entry: {
-    // app: path.join(__dirname, '../src/main.js')
-    app: './src/main.js'
+    app: path.resolve(__dirname, '..', 'src/main.js')
+    // app: './src/main.js'
   },
   output: {
     filename: 'scripts/[name][hash].js',
     // filename: 'main.js',
-    path: path.join(__dirname, '../dist')
+    path: path.resolve(__dirname, '..', 'dist')
   },
   //配置简洁路径
   resolve: {

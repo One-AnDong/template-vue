@@ -1,18 +1,10 @@
 <template lang="pug">
-  #app
-    start
+#app
+  router-view
 </template>
 <script>
-import Start from './components/Start.vue'
 export default {
-  name: 'APP',
-  components: {
-    Start
-  }
+  name: 'APP'
 }
 </script>
-<style lang="stylus" scoped >
-#app
-  font-size 14px
-  color #333
-</style>
+<style lang="stylus"></style>

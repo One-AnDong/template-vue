@@ -3,6 +3,7 @@ const baseConf = require('./webpack.base.conf')
 const { development } = require('../config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const portfinder = require('portfinder')
+const path = require('path')
 
 const devWebpackConfig = merge(baseConf, {
   mode: 'development',
@@ -40,7 +41,7 @@ const devWebpackConfig = merge(baseConf, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: path.resolve(__dirname, '..', 'index.html'),
       inject: 'body'
     })
   ]
